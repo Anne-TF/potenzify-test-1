@@ -1,0 +1,18 @@
+// IMPORTS
+@import '_fonts';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: $lato-regular;
+  font-size: clamp(13px, 15px, 16px);
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+main {
+  width: 100vw;
+}
