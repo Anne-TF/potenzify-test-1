@@ -12,6 +12,7 @@ export default {
       colors: {
         'app-primary': '#8839DD',
         'app-secondary': '#3D3D3D',
+        'app-tertiary': '#01458A',
         'app-success': '#85DE66',
         'app-danger': '#fa004f'
       },

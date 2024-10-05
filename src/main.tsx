@@ -2,12 +2,15 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '@app/css/app.scss';
 
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
 // ROUTES
 import { UniverseRoutes } from '@modules/Universe/presentation/routes';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { WorldRoutes } from '@modules/Worlds/presentation/routes';
 
 const router = createBrowserRouter([
     UniverseRoutes,
+    WorldRoutes
 ]);
 
 createRoot(document.getElementById('root')!).render(

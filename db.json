@@ -1,0 +1,134 @@
+{
+  "universes": [
+    {
+      "id": "1",
+      "name": "Universe 1",
+      "isBlocked": false,
+      "isCompleted": false
+    },
+    {
+      "id": "2",
+      "name": "Universe 2",
+      "isBlocked": true,
+      "isCompleted": true
+    },
+    {
+      "id": "3",
+      "name": "Universe 3",
+      "isBlocked": true,
+      "isCompleted": true
+    },
+    {
+      "id": "4",
+      "name": "Universe 4",
+      "isBlocked": true,
+      "isCompleted": true
+    },
+    {
+      "id": "5",
+      "name": "Universe 5",
+      "isBlocked": true,
+      "isCompleted": true
+    }
+  ],
+  "worlds": [
+    {
+      "id": "1",
+      "name": "World 1",
+      "isBlocked": false,
+      "isCompleted": false,
+      "isCurrent": true,
+      "universeId": "1",
+      "stages": [
+        {
+          "id": "1",
+          "name": "Stage 1",
+          "isBlocked": false,
+          "isCompleted": false,
+          "img": "stage-1",
+          "isCurrent": true,
+          "start": "1",
+          "position": ""
+        },
+        {
+          "id": "2",
+          "name": "Stage 2",
+          "isBlocked": true,
+          "isCompleted": false,
+          "img": "stage-2",
+          "isCurrent": false,
+          "start": "3",
+          "position": ""
+        },
+        {
+          "id": "3",
+          "name": "Stage 3",
+          "isBlocked": true,
+          "isCompleted": false,
+          "img": "stage-2",
+          "isCurrent":  false,
+          "start": "5",
+          "position": ""
+        },
+        {
+          "id": "4",
+          "name": "Stage 4",
+          "isBlocked": true,
+          "isCompleted": false,
+          "img": "stage-3",
+          "isCurrent":  false,
+          "start": "3",
+          "position": ""
+        },
+        {
+          "id": "5",
+          "name": "Stage 5",
+          "isBlocked": true,
+          "isCompleted": false,
+          "img": "stage-2",
+          "isCurrent": false,
+            "start": "1",
+          "position": ""
+        },
+        {
+          "id": "6",
+          "name": "Stage 6",
+          "isBlocked": true,
+          "isCompleted": false,
+          "img": "stage-3",
+          "isCurrent": false,
+          "start": "3",
+          "position": ""
+        },
+        {
+          "id": "7",
+          "name": "Stage 7",
+          "isBlocked": true,
+          "isCompleted": false,
+          "img": "stage-4",
+          "isCurrent": false,
+          "start": "5",
+          "position": ""
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "World 2",
+      "isBlocked": true,
+      "isCompleted": false,
+      "img": "world-2",
+      "isExtra": false,
+      "universeId": "1"
+    },
+    {
+      "id": "3",
+      "name": "Extra World 1",
+      "isBlocked": true,
+      "isCompleted": false,
+      "img": "world-1",
+      "isExtra": true,
+      "universeId": "1"
+    }
+  ]
+}
