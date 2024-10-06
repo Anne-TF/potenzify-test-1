@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# Potenzify test 1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a test project for Potenzify using a speech-to-text API. Down below you'll find the instructions to run the project.
 
-Currently, two official plugins are available:
+# Intructions to run the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Create a .env file, you can copy the .env.example file and rename it to .env.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 2. Install the dependencies
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 3. Install json-server
+```bash
+npm install -g json-server
 ```
+
+### 4. Start json-server
+#### Note: Make sure to run this command in the root of the project. If you use a different port, make sure to change the port in the `.env` file, in the API_PORT variable.
+```bash
+json-server --watch db.json --port 3030
+```
+
+### 5. Start the project
+```bash
+npm run dev
+```
+
+And that's all :)!
+
+**Note**: The JSON server package is used to simulated API calls. **If you don't start the JSON server API, you will not be able to list the universes/worlds, therefore you will not be able to visualize the project correctly.**
+
+# Project Structure
+
+The project is structured following a clean/DDD/Hexagonal architecture. The project is divided into the following folders:
+
+- **app**: Contains the app's assets, such as images, styles, and fonts.
+- **common**: Contains the common components and utilities that are used by multiple modules throughout the project. Here you can find utils, common pages (Such as the Error Page), layouts, interfaces, custom hooks and general context providers.
+- **modules**: Contains the different modules of the project.
+    - **universe**: Contains the universes module. Here you can find the auth related pages, components, interfaces and routes.
+    - **worlds**: Contains the worlds/stages (exercises) module. Here you can find the dashboard related pages, components, interfaces and routes.
+
+Each module is divided into the following folders:
+- **presentation**: Contains the things that are exposed to the final client, like components, pages and the modules' routes.
+- **infrastructure**: Contains the things that are related to the data layer, like API gateways, API routes for the module, and the data models (interfaces, enums).
+- **domain**: Contains the things that are related to the business logic, like the use cases.

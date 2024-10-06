@@ -65,7 +65,7 @@ export function WorldsPage ()
 
     return (
         <section className="worlds-bg p-3">
-            <BackButton customClasses="absolute top-6 left-6" />
+            <BackButton customOnClick={() => navigate('/')} customClasses="absolute top-6 left-6 lg:left-1/4" />
             <h1 className="text-white w-full text-center text-nunito font-black text-3xl mt-10">Mundo {result?.id}</h1>
             <h3 className="text-white w-full text-center text-nunito font-black text-xl mt-1">Universo {universeId}</h3>
 
@@ -77,7 +77,7 @@ export function WorldsPage ()
 
             {!loading && (
                 <div role="grid"
-                     className="grid grid-cols-6 mx-auto w-10/12 space-y-4 relative mt-16 h-full">
+                     className="grid grid-cols-6 mx-auto w-10/12 space-y-4 relative mt-16 h-full md:h-auto md:mt-[5%] sm:w-8/12 md:w-[55vw] lg:w-[40vw] xl:w-[25vw]">
                     {result?.stages.map((stage, index) => {
                         return (
                             <>

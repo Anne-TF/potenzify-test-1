@@ -43,7 +43,7 @@ export function UniversesPage ()
         <section className="universe-bg p-3">
             <h1 className="text-white w-full text-center text-nunito font-black text-3xl mt-10">Universos</h1>
 
-            <div role="contentinfo" className="h-[85vh] flex items-center px-4">
+            <div role="contentinfo" className="h-[85vh] flex items-center px-4 mx-auto md:h-auto md:mt-[5%] sm:w-8/12 md:w-[55vw] lg:w-[40vw] xl:w-[25vw]">
                 <div role="grid" className="grid grid-cols-4 w-10/12 mx-auto mt-10">
                     {results.map((universe, index) =>
                     {

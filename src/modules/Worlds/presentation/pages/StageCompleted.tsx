@@ -8,10 +8,10 @@ export function StageCompleted()
     const {universeId} = useParams<{universeId: string}>();
     const navigate = useNavigate();
     return (
-        <section className="px-6 py-8 text-app-secondary flex flex-col h-[100vh] justify-between">
-            <div className="flex flex-col">
-                <BackButton customClasses="absolute top-6 left-6 !text-app-secondary"/>
-                <h1 className="mt-12 text-2xl text-center">
+        <section className="px-6 py-8 text-app-secondary flex flex-col h-[100vh] justify-between lg:justify-start">
+            <div className="flex flex-col w-full sm:w-8/12 md:w-[55vw] lg:w-[40vw] xl:w-[25vw] mx-auto">
+                <BackButton customClasses="absolute top-6 left-6 !text-app-secondary  lg:top-12 lg:left-[33%]"/>
+                <h1 className="mt-12 lg:mt-3 lg:text-3xl text-2xl lg:text-3xl text-center">
                     ¡Felicidades! <br/>
                     <span className="text-lg">Has completado el ejercicio</span>
                 </h1>
@@ -21,7 +21,7 @@ export function StageCompleted()
                 </div>
             </div>
 
-            <div className="relative">
+            <div className="relative w-full mt-0 lg:mt-[10%] sm:w-8/12 md:w-[55vw] lg:w-[40vw] xl:w-[25vw] mx-auto">
                 <img
                     src={Kika}
                     height="auto"
@@ -50,7 +50,6 @@ export function StageCompleted()
                    customOnClick={() => navigate(`/worlds/${universeId}`)}
                    customClassName="bg-app-primary text-white w-full py-3 rounded-lg text-nunito font-extrabold" text="Ir al próximo ejercicio" />
             </div>
-
         </section>
     );
 }

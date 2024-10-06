@@ -44,13 +44,13 @@ const ToastNotification = ({ message, type = 'success' }: IProps) => {
     return (
         <div
             role="status"
-            className={`fixed bottom-0 left-1/2 z-[100] w-full md:w-auto -translate-x-1/2 items-center justify-center rounded-t md:rounded ${getColor()} px-8 md:px-14 py-5 md:py-3 shadow-lg transition-transform duration-500 text-center ease-in-out ${
+            className={`fixed bottom-0 left-1/2 lg:left-1/4 z-[100] w-full lg:w-96 -translate-x-1/2 lg:-translate-x-3/4 items-center justify-center lg:justify-start rounded-t md:rounded ${getColor()} px-8 md:px-10 py-5 md:py-3 shadow-lg transition-transform duration-500 text-center md:text-left ease-in-out ${
                 show
-                    ? 'translate-y-0 md:translate-y-[-60px] opacity-100'
+                    ? 'translate-y-0 md:translate-y-[-20px] opacity-100'
                     : 'translate-y-full opacity-100'
             }`}
         >
-            <span className="text-nunito font-bold whitespace-pre-wrap text-center">{message}</span>
+            <span className="text-nunito font-bold whitespace-pre-wrap">{message}</span>
         </div>
     );
 }

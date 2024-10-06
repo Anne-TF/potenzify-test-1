@@ -40,15 +40,15 @@ export function Stage()
 
     return (
         <section className="px-6 py-8 text-app-secondary flex flex-col h-[100vh] justify-between">
-            <div className="flex flex-col">
-                <BackButton customClasses="absolute top-6 left-6 !text-app-secondary" />
-                <h1 className="mt-12 text-2xl">Afirmaciones positivas</h1>
+            <div className="flex flex-col sm:w-8/12 md:w-[55vw] lg:w-[40vw] xl:w-[25vw] mx-auto">
+                <BackButton customClasses="absolute top-6 left-6 !text-app-secondary lg:top-12 lg:left-[33%]" />
+                <h1 className="mt-12 lg:mt-3 text-2xl">Afirmaciones positivas</h1>
 
                 <div className="w-full rounded-full h-4 relative mt-3" style={{ background: '#F5F5F5'  }}>
                     <span className="w-7/12 bg-app-primary h-full absolute rounded-full" />
                 </div>
 
-                <div className="mt-20 relative">
+                <div className="mt-20 lg:mt-32 relative">
                     <img
                         src={Kika}
                         height="auto"
@@ -83,7 +83,7 @@ export function Stage()
                 />
             </div>
 
-            <Button customClassName="border rounded-xl py-1.5 text-nunito font-extrabold text-base text-app-secondary border-app-secondary"
+            <Button customClassName="border rounded-xl w-full py-1.5 text-nunito font-extrabold text-base lg:text-lg text-app-secondary border-app-secondary sm:w-8/12 md:w-[55vw] lg:w-[40vw] xl:w-[25vw] mx-auto"
                     customOnClick={checkExercise}
                     typeButton="button" text="Siguiente" />
 
