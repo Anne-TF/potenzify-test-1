@@ -14,7 +14,8 @@ export default {
         'app-secondary': '#3D3D3D',
         'app-tertiary': '#01458A',
         'app-success': '#85DE66',
-        'app-danger': '#fa004f'
+        'app-danger': '#fa004f',
+        'app-warning': '#FFC107',
       },
     },
   },

@@ -1,11 +1,11 @@
-import '../css/world.scss';
 import {useEffect, useState} from 'react';
 import {IWorld} from '@modules/Worlds/infrastructure/interfaces';
-import {Navigate, useParams} from 'react-router-dom';
+import {Navigate, useNavigate, useParams} from 'react-router-dom';
 import {ListWorldsByUniverseIdUseCase} from '@modules/Worlds/domain/useCases';
-import {BackButton, BouncingLabel} from '@common/components';
+import {BackButton, BouncingLabel, Spinner} from '@common/components';
 
 // ASSETS
+import '../css/world.scss';
 import Stage1 from '@assets/images/stage-1.svg';
 import Stage2 from '@assets/images/stage-2.svg';
 import Stage3 from '@assets/images/stage-3.svg';
@@ -19,6 +19,7 @@ export function WorldsPage ()
     const {universeId} = useParams<{universeId: string}>();
     const [loading, setLoading] = useState<boolean>(true);
     const [result, setResult] = useState<IWorld | null>(null);
+    const navigate = useNavigate();
 
     const getWorlds = async () => {
         setLoading(true);
@@ -68,53 +69,78 @@ export function WorldsPage ()
             <h1 className="text-white w-full text-center text-nunito font-black text-3xl mt-10">Mundo {result?.id}</h1>
             <h3 className="text-white w-full text-center text-nunito font-black text-xl mt-1">Universo {universeId}</h3>
 
-            <div
-                className="grid grid-cols-6 mx-auto w-10/12 justify-items-center space-y-3 justify-center relative mt-20 h-[75%]">
-                {result?.stages.map((stage, index) => {
-                    return (
-                        <>
-                            <div key={stage.id.concat('-image')}
-                                 className={`col-start-${stage.start} ${stage.position} col-span-2 relative`}>
-                                {(stage.isCurrent && !stage.isBlocked) && (
-                                    <BouncingLabel
-                                        customColorClass="bg-app-tertiary"
-                                        customClasses="w-40 -left-8 -top-12"
-                                    />
-                                )}
-                                <img
-                                    height="auto"
-                                    width="auto"
-                                    alt={'image_'.concat(stage.name.replace(/ /g, '_'))}
-                                    className="object-contain w-[5.5rem]"
-                                    src={getImg(stage.img)}/>
-                            </div>
-                            <div key={stage.id.concat('-filler')}
-                                 className={`col-start-${parseInt(stage.start, 10) + 1} bg-blue-400 w-auto col-span-${stage.start === '1' ? '1' : (index + 1 === 3 ? '2' : '4')}`}/>
-                        </>
-                    )
-                })}
+            {loading && (
+                <div className="h-[60vh] flex items-center justify-center">
+                    <Spinner spinnerColor="#fff" loaderColor="#e5e5e5" />
+                </div>
+            )}
 
-                <img
-                    height="auto"
-                    width="auto"
-                    alt="pink_and_yellow_portal"
-                    className="object-contain h-28 absolute top-[23%] left-1"
-                    src={ExtraStage1}/>
+            {!loading && (
+                <div role="grid"
+                     className="grid grid-cols-6 mx-auto w-10/12 space-y-4 relative mt-16 h-full">
+                    {result?.stages.map((stage, index) => {
+                        return (
+                            <>
+                                <div key={stage.id.concat('-image')}
+                                     role="gridcell"
+                                     onClick={() => {
+                                         if (stage.isBlocked || stage.isCompleted) return;
+                                         setResult({
+                                             ...result, stages: result.stages.map((e) => {
+                                                 if (e.id === stage.id) {
+                                                     return {...e, showLabel: true};
+                                                 }
+                                                 return e;
+                                             })
+                                         });
+                                     }}
+                                     className={` ${stage.position} col-span-2 relative`}>
+                                    {stage.showLabel && (
+                                        <BouncingLabel
+                                            customColorClass="bg-app-tertiary"
+                                            onClick={() => {
+                                                if (stage.isBlocked) return;
+                                                navigate(`/worlds/${universeId}/stage/${stage.id}`)
+                                            }}
+                                            customClasses="w-40 -left-8 -top-16"
+                                        />
+                                    )}
+                                    <img
+                                        height="auto"
+                                        width="auto"
+                                        role="figure"
+                                        alt={'image_'.concat(stage.name.replace(/ /g, '_'))}
+                                        className="object-contain w-[5.5rem]"
+                                        src={getImg(stage.img)}/>
+                                </div>
+                                <div key={stage.id.concat('-filler')}
+                                     className={`col-start-${parseInt(stage.start, 10) + 1} h-10 col-span-${stage.start === '1' ? '1' : (index + 1 === 3 ? '2' : (index + 1 === 4 ? '1' : '4'))}`}/>
+                            </>
+                        )
+                    })}
 
-                <img
-                    height="auto"
-                    width="auto"
-                    alt="blue_crystals_over_a_yellow_platform"
-                    className="object-contain h-28 absolute top-[55%] right-3"
-                    src={ExtraStage2}/>
+                    <img
+                        height="auto"
+                        width="auto"
+                        alt="pink_and_yellow_portal"
+                        className="object-contain h-28 absolute top-[23%] left-1"
+                        src={ExtraStage1}/>
 
-                <img
-                    height="auto"
-                    width="auto"
-                    alt="blue_crystals_over_a_yellow_platform"
-                    className="object-contain h-24 absolute bottom-2 -left-1"
-                    src={ExtraStage3}/>
-            </div>
+                    <img
+                        height="auto"
+                        width="auto"
+                        alt="blue_crystals_over_a_yellow_platform"
+                        className="object-contain h-28 absolute top-[55%] right-3"
+                        src={ExtraStage2}/>
+
+                    <img
+                        height="auto"
+                        width="auto"
+                        alt="blue_crystals_over_a_yellow_platform"
+                        className="object-contain h-24 absolute bottom-2 -left-1"
+                        src={ExtraStage3}/>
+                </div>
+            )}
         </section>
     )
 }

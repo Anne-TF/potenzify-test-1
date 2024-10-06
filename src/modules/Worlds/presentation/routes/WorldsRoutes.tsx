@@ -15,5 +15,19 @@ export const WorldRoutes = {
                 return {Component: WorldsPage};
             },
         },
+        {
+            path: 'stage/:stageId',
+            async lazy() {
+                const { Stage } = await import("../pages/Stage.tsx");
+                return {Component: Stage};
+            },
+        },
+        {
+            path: 'stage-completed',
+            async lazy() {
+                const { StageCompleted } = await import("../pages/StageCompleted.tsx");
+                return {Component: StageCompleted};
+            },
+        }
     ],
 };

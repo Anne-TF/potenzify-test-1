@@ -7,6 +7,7 @@ export interface IStage {
     isCurrent: boolean;
     start: string;
     position: string;
+    showLabel?: boolean;
 }
 
 export interface IWorld {
